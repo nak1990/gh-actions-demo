@@ -1,0 +1,16 @@
+name: First Action
+
+on: [push]
+
+jobs:
+  say-hello:
+    # Change 1: Switch the Runner to Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Print a greeting
+        run: echo "Hello! I am a Windows runner now."
+
+      - name: Check system info
+        # Change 2: Use a Windows command (displays PowerShell version)
+        run: $PSVersionTable
