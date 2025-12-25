@@ -10,7 +10,11 @@ jobs:
       # 1. We MUST checkout first, or verify.ps1 won't be there!
       - name: Checkout the code
         uses: actions/checkout@v4
+        
+      # THIS STEP IS FOR TROUBLESHOOTING
+      - name: List files for debugging
+        run: dir
 
       # 2. Run the script file from the repository
       - name: Run the verification script
-        run: ./verify.ps1
+        run: powershell .\\verify.ps1
