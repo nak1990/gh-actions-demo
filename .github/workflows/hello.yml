@@ -4,13 +4,14 @@ on: [push]
 
 jobs:
   say-hello:
-    # Change 1: Switch the Runner to Windows
     runs-on: windows-latest
 
     steps:
-      - name: Print a greeting
-        run: echo "Hello! I am a Windows runner now."
+      # Step 1: The Pre-made Action
+      # We use the keyword 'uses' instead of 'run'
+      - name: Checkout the code
+        uses: actions/checkout@v4
 
-      - name: Check system info
-        # Change 2: Use a Windows command (displays PowerShell version)
-        run: $PSVersionTable
+      # Step 2: Verify it worked
+      - name: List files in the repository
+        run: dir
