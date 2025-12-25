@@ -1,17 +1,16 @@
-name: First Action
+name: Production Test
 
 on: [push]
 
 jobs:
-  say-hello:
+  test-code:
     runs-on: windows-latest
 
     steps:
-      # Step 1: The Pre-made Action
-      # We use the keyword 'uses' instead of 'run'
+      # 1. We MUST checkout first, or verify.ps1 won't be there!
       - name: Checkout the code
         uses: actions/checkout@v4
 
-      # Step 2: Verify it worked
-      - name: List files in the repository
-        run: dir
+      # 2. Run the script file from the repository
+      - name: Run the verification script
+        run: ./verify.ps1
