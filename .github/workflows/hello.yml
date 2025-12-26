@@ -1,27 +1,21 @@
-name: Production Test
+name: HIL Test Execution
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
 
 jobs:
-  test-code:
-    runs-on: windows-latest
- 
+  run-ecu-test:
+    # Change this from 'windows-latest' to your custom label!
+    runs-on: [self-hosted, ecu-test]
+
     steps:
-      - name: Checkout the code
+      - name: Checkout Test Scripts
         uses: actions/checkout@v4
 
-      - name: Debug - Where am I?
-        run: |
-          pwd
-          ls
-
-      - name: Run the verification script
-        # We use './' and tell GitHub to use PowerShell Core
+      - name: Start ECU-TEST
         shell: pwsh
-        run: ./verify.ps1
-
-      - name: Save the Test Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: "**/test-report.txt"
+        run: |
+          # Example command to start ECU-TEST via its Command Line Interface
+          # You will need the actual path to your ECU-TEST executable
+          & "C:\Tools\ecutest2025_2\ecu.test.exe" --run-workspace "C:\Projects\gh-actions-ws" --execute-package "Tests\BrakeTest.pkg"
