@@ -18,4 +18,4 @@ jobs:
         run: |
           # Example command to start ECU-TEST via its Command Line Interface
           # You will need the actual path to your ECU-TEST executable
-          & "C:\Tools\ecutest2025_2\ecu.test.exe" --run-workspace "C:\Projects\gh-actions-ws" --execute-package "Tests\BrakeTest.pkg"
+          & "C:\Tools\ecutest2025_2\ecu.test.exe" --workspaceDir "C:\Projects\gh-actions-ws" --open "C:\Projects\gh-actions-ws\Packages\Tests\BrakeTest.pkg" --run "C:\Projects\gh-actions-ws\Packages\Tests\BrakeTest.pkg" --waitRunFinished
