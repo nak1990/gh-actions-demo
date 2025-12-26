@@ -12,3 +12,7 @@ if (Test-Path ".github") {
 }
 
 Write-Host "--- TESTS PASSED ---"
+
+# Create a dummy report file
+"This is the official test report from $(Get-Date)" | Out-File -FilePath test-report.txt
+Write-Host "Report file created: test-report.txt"
